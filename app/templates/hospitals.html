@@ -1,0 +1,24 @@
+<div id="hospitals" class="box">
+	<h3>Sjukhus</h3>
+	<p>
+		Dessa är de sjukhus som studien kommer att genomföras på.
+	</p>
+	<table class="table table-striped">
+		<thead>
+			<th>#</th>
+			<th>Namn</th>
+			<th>Ta bort</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="hospital in hospitals">
+				<td>{{hospital.id}}</td>
+				<td>{{hospital.name}}</td>
+				<td><a href=""><i class="icon-remove"></i></a></td>
+			</tr>
+		</tbody>
+	</table>
+	<form class="form-inline">
+		<input type="text" placeholder="Sjukhus" />
+		<button class="btn" type="submit" name="add">Lägg till</button>
+	</form>
+</div>

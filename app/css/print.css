@@ -1,0 +1,75 @@
+body {
+	font-size: 12pt;
+}
+h1 {
+	font-size: 32pt;
+}
+#wrapper {
+	font-weight: lighter;
+	width: auto;
+	height: 100%;
+	margin: 0.5cm 1cm 0.5cm 1cm;	
+}
+#header {
+	margin: 0 0 50px 0;
+}
+#time {
+	height: auto;
+	margin: 0 0 50px 0;
+}
+#time p {
+	font-size: 36pt;
+	border: solid 1px black;
+	width: 80%;
+	height: 100%;
+	vertical-align: center;
+	padding: 20px 0 20px 0;
+}
+.questions {
+	margin: 50px 0 0 0;
+}
+.code {
+	position: absolute;
+	right: 1cm;
+}
+.question {
+	margin: 10px 0 20px 0;
+}
+.number {
+	display: inline-block;
+	padding: 30px;
+}
+.checkbox {
+	display: inline-block;
+	padding: 30px 10px 30px 10px;
+	font-weight: bold;
+}
+.startpoint {
+	float: left;
+	padding: 30px 20px 30px 30px;
+	width: 27%;
+}	
+.endpoint {
+	float: right;
+	padding: 30px 30px 30px 20px;
+}
+.pb {
+	page-break-after: always;
+}
+table {
+	width: 100%;
+}
+th {
+	border-bottom: solid 1px black;
+}
+td {
+	text-align: center;
+	border-bottom: solid 1px grey;
+}
+.date {
+	width: 170px;
+	text-align: left;
+	padding: 5px 0px 5px 50px;
+	background-color: #EFEFEF;
+	border-bottom: solid 1px black;
+}

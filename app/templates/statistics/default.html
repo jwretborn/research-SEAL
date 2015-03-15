@@ -1,0 +1,28 @@
+<div ng-controller="defaultStatisticsController">
+	<table class="table table-striped">
+		<thead>
+			<th>#</th>
+			<th>Namn</th>
+			<th>Mätpunkter</th>
+			<th>Helt ifyllda</th>
+			<th>Delvis ifyllda</th>
+			<th>Ej ifyllda</th>
+			<th>Formulär</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="hospital in hospitals">
+				<td>{{hospital.id}}</td>
+				<td>{{hospital.name}}</td>
+				<td>{{hospital.readings.length}}</td>
+				<td>{{hospital.filled_readings}} ({{round(hospital.filled_readings/hospital.readings.length)}}%)</td>
+				<td>{{hospital.part_readings}} ({{round(hospital.part_readings/hospital.readings.length)}}%)</td>
+				<td>{{hospital.unfilled_readings}} ({{round(hospital.unfilled_readings/hospital.readings.length)}}%)</td>
+				<td>{{hospital.forms.length}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div default-chart>
+		<div class="default-chart"></div>
+		<button class="btn export">Export to png</button>
+	</div>
+</div>

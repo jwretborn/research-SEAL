@@ -1,0 +1,36 @@
+// Assessment list
+SELECT 
+seal_readings.id AS id, 
+seal_forms.`question_1` AS lak_ass, 
+seal_forms.`question_2` AS lak_stress, 
+seal_forms2.`question_1` AS ssk_ass, 
+seal_forms2.`question_2` AS ssk_stress 
+FROM seal_readings 
+LEFT JOIN seal_forms 
+ON seal_forms.reading_id = seal_readings.id 
+LEFT JOIN seal_forms AS seal_forms2 
+ON seal_forms2.reading_id = seal_readings.id 
+WHERE seal_forms.type = 1 AND seal_forms2.type = 2
+
+// Event and patient join
+SELECT * 
+FROM seal_events 
+LEFT JOIN seal_patients on seal_events.patient_id = seal_patients.id 
+WHERE seal_patients.in_timestamp <= 1362985200 
+AND seal_patients.out_timestamp >= (1362985200-3600) 
+AND seal_events.timestamp <= 1362985200 
+AND seal_events.hospital_id = 3
+
+// Remove incorrect analyze-values
+Update seal_analyze set seal_analyze.`nurse_assess` = NULL where seal_analyze.`nurse_assess` = 0;
+Update seal_analyze set seal_analyze.`doc_assess` = NULL where seal_analyze.`doc_assess` = 0;
+Update seal_analyze set seal_analyze.`mds`= NULL where seal_analyze.`mds`= 0;
+Update seal_analyze set seal_analyze.`nurses` = NULL where seal_analyze.`nurses` = 0;
+Update seal_analyze set seal_analyze.`unseen` = NULL where seal_analyze.`unseen` = 1
+Update seal_analyze set seal_analyze.`mean_assess` = NULL where seal_analyze.`mean_assess` = 0;
+
+// Get number of filled in assessments
+SELECT * from seal_analyze
+LEFT JOIN seal_readings
+ON seal_analyze.reading_id = seal_readings.id
+WHERE seal_readings.timestamp < 1364894175 AND doc_assess is not NULL and doc_assess > 0

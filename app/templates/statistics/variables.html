@@ -1,0 +1,74 @@
+<div ng-controller="variableStatisticsController">
+	<h2>Variables</h2>
+	<div id="filter">
+		<h3>Filter</h3>
+		<div class="filter-table">
+			<table class="table table-striped">
+				<thead>
+					<th colspan="2">Mätvärde(x)</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="(key, measure) in measures">
+						<td><input type="checkbox" ng-model="measure[key]" name="measure" /></td>
+						<td>{{measure.name}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="filter-table">
+			<table class="table">
+				<thead>
+					<th colspan="8">Variabler(y)</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="checkbox" name="variable" ng-model="variables['prio']" value="prio" /></td>
+						<td>Prio</td>
+						<td><input type="checkbox" name="variable" ng-model="variables['awaiting_md']" value="awaiting_md" /></td>
+						<td>Awaiting MD</td>
+						<td><input type="checkbox" name="variable" ng-model="variables['patient_hours']" value="patient_hours" /></td>
+						<td>Patient hours</td>
+						<td><input type="checkbox" name="variable" ng-model="variables['admit_index']" value="admit_index" /></td>
+						<td>Admit index</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="variable" ng-model="variables['triage_prio']" value="triage_prio" /></td>
+						<td>Triage prio</td>
+						<td><input type="checkbox" name="variable" ng-model="variables['average_time']" value="average_time" /></td>
+						<td>Average time</td>
+						<td><input type="checkbox" name="variable" ng-model="variables['occupancy']" value="occupancy" /></td>
+						<td>Occupancy</td>
+						<td><input type="checkbox" name="variable" ng-model="variables['unseen']" value="unseen" /></td>
+						<td>Unseen</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="variable" ng-model="variables['high_prio']" value="high_prio" /></td>
+						<td>High prio</td>
+						<td><input type="checkbox" name="variable" ng-model="variables['longest_stay']" value="longest_stay" /></td>
+						<td>Longest stay</td>
+						<td><input type="checkbox" name="variable" ng-model="variables['volume_average']" value="volume_average" /></td>
+						<td>Volume average</td>
+						<td><input type="checkbox" name="variable" ng-model="variables['mds']" value="mds" /></td>
+						<td>MDs</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><input type="checkbox" name="variable" ng-model="variables['occupancy_rate']" value="occupancy_rate" /></td>
+						<td>Occupancy rate</td>
+						<td><input type="checkbox" name="variable" ng-model="variables['nurses']" value="nurses" /></td>
+						<td>Nurses</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<button ng-click="filter()" class="btn submit">Generate charts</button>
+	</div>
+
+	<div id="charts">
+		<div variable-chart ng-repeat="category in categories" id="{{category}}">
+		</div>
+	</div>
+</div>

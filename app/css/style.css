@@ -1,0 +1,188 @@
+/* 
+	Common stuff 
+*/
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 200;
+}
+h1, h2, h3, h4 {
+	margin: 0;
+}
+h1 {
+	margin-bottom: 0;
+}
+.sidebar {
+	margin: 0;
+}
+.sidebar .block {
+	padding-bottom: .5em;
+}
+.sidebar .readmore {
+	float: right;
+	padding-top: 1em;
+}
+a, a:active, a:hover {
+}
+b {
+	font-weight: bold;
+}
+i {
+	font-style: italic;
+}
+html {
+	overflow-y: scroll;
+}
+img {
+	border: none;
+}
+p, li {
+	font-size: 10pt;
+}
+ol {
+	list-style-type: decimal;
+}
+a:active, a:link, a:active * {
+	outline: none; /* stupid firefox */
+	border: none;
+}
+h1 { font-size: 24pt; }
+h2 { font-size: 20pt; }
+h3 { font-size: 16pt; }
+h4 { font-size: 12pt; }
+h5 { font-size: 10pt; }
+h6 { font-size: 8pt; }
+
+/* Loader */
+div.loader {
+	height: 150px;
+	padding-top: 150px;
+	text-align: center;
+}
+
+/*
+	Main
+*/
+div#wrapper {
+	margin: 0 auto;
+	padding: 0 20px;
+	width: 1260px;
+	background-color: #F7F7F9;
+	height: 100%;
+}
+div#content {
+	float: left;
+	height: 100%;
+}
+div#content h1 {
+	padding: 0 0 5px 0;
+}
+div#header {
+	padding: 20px 0px 20px 0;
+	height: 80px;
+}
+ul {
+	list-style: none;
+	color: #000000;
+	font-size: 13px;
+	margin: 0;
+	padding: 0;	
+}
+ul li {
+	padding: 2px 0 5px 18px;
+	background-repeat: no-repeat;
+	background-position: 0.2em .52em;
+}
+.section {
+	float: left;
+}
+
+/*
+	Social
+*/
+div#social {
+	float: right;
+	margin: 5px 5px 0 0;
+}
+
+/*
+	Menu
+*/
+
+/*
+ 	Content
+*/
+.box {
+	background-color: whitesmoke;
+	padding: 15px 15px 15px 15px;
+	border: 1px solid #ccc;
+	border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	margin: 2px 10px 15px 0;
+	font-size: 14px;
+	float: left;
+	width: 97%;
+}
+
+/*
+	Footer
+*/
+div#footer {
+	width: 100%;
+	margin: 30px 0;
+}
+div#footer div {
+	padding-top: 93px;
+	color: #81c12b;
+	font-size: 11px;
+	text-align: center;
+}
+
+/* Messages */
+div#messages {
+	position: fixed;
+	top: 2em;
+	right: 2em;
+	z-index: 10000;
+}
+.message {
+	display: none;
+	width: 20em;
+	padding: 1.2em 1.2em 1.2em 4em;
+	background-color: rgba(32, 32, 32, 0.8);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#af202020', endColorstr='#af202020'); /* IE */
+	margin-bottom: 1em;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	-moz-box-shadow: 0 0 10px #888;
+	-webkit-box-shadow: 0 0 10px #888;
+	box-shadow: 0 0 10px #888;
+	color: #fff;
+	background-image: url('../images/messages/message.png');
+	background-position: 1em center;
+	background-repeat: no-repeat;
+}
+.message.error {
+	background-image: url('../images/messages/error.png');
+}
+.message.add {
+	background-image: url('../images/messages/add.png');
+}
+.message.edit {
+	background-image: url('../images/messages/edit.png');
+}
+.message.delete {
+	background-image: url('../images/messages/delete.png');
+}
+
+/* 
+	Statistics
+*/
+#filter {
+	float: left;
+}
+.filter-table {
+	width: auto;
+	float: left;
+	margin: 0 20px 0 10px;
+}

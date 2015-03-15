@@ -1,0 +1,20 @@
+<div id="start" class="box">
+	<h3>Start</h3>
+	<p>Här görs inställningar för systemet</p>
+	<form class="form-inline">
+		<label class="checkbox">
+			<input type="checkbox" ng-model="remove" name="count" /> {{count}} mätpunkter
+		</label>
+		<button type="submit" ng-disabled="!remove" ng-click="clear()" class="btn">Rensa mätpunkter</button>
+	</form>
+	<form>
+		<label for="">Skapa tider</label>
+		<input type="text" ng-model="num" placeholder="10" />
+		<label for="">mellan den</label>
+		<input type="text" class="datepicker" ng-model="startDate" placeholder="2013-01-31" />
+		<label for="">och</label>
+		<input type="text" class="datepicker" ng-model="endDate" placeholder="2013-02-28" />
+		<br />
+		<button type="submit" class="btn" ng-disabled="!startDate || !endDate" ng-click="generate()">Skapa</button>
+	</form>
+</div>

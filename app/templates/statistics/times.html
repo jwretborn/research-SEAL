@@ -1,0 +1,24 @@
+<div ng-controller="timesStatisticsController">
+	<table class="table table-striped">
+		<thead>
+			<th>Tid</th>
+			<th>Mätpunkter</th>
+			<th>Helt ifyllda</th>
+			<th>Delvis ifyllda</th>
+			<th>Ej ifyllda</th>
+			<th>Formulär</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="time in times">
+				<td>{{time.relativehour}}</td>
+				<td>{{time.readings.length}}</td>
+				<td>{{time.filled_readings}} ({{round(time.filled_readings/time.readings.length)}}%)</td>
+				<td>{{time.part_readings}} ({{round(time.part_readings/time.readings.length)}}%)</td>
+				<td>{{time.unfilled_readings}} ({{round(time.unfilled_readings/time.readings.length)}}%)</td>
+				<td>{{time.forms.length}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div times-chart></div>
+	<div time-assessment-chart></div>
+</div>

@@ -1,0 +1,32 @@
+<div id="readings" class="box">
+	<h3>Mätpunkter</h3>
+	<p>
+		Lista på mätpunkter för all data som kommer att samlas in.
+	</p>
+	<form class="form-inline">
+		<label for="reading_selection">Sjukhus:</label>
+		<select id="reading_selection" class="form-inline" ng-model="selection" ng-change="filter()">
+			<option value="-1">Alla</option>
+			<option ng-repeat="hospital in hospitals" value="{{hospital.id}}">{{hospital.name}}</option>
+		</select>
+		<button type="submit" class="btn">Skriv ut</button>
+	</form>
+	<table class="table table-striped">
+		<thead>
+			<th>#</th>
+			<th>Sjukhus</th>
+			<th>Datum</th>
+			<th>Tid</th>
+			<th></th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="reading in readings">
+				<td>{{reading.id}}</td>
+				<td>{{reading.hospital}}</td>
+				<td>{{reading.day}}</td>
+				<td>{{reading.hour}}</td>
+				<td><a href="/api/printer/form/{{reading.id}}" target="_blank"><button type="submit" class="btn">Skriv ut</button></a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

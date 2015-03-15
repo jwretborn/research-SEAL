@@ -1,0 +1,24 @@
+<div ng-controller="daysStatisticsController">
+	<table class="table table-striped">
+		<thead>
+			<th>Dag</th>
+			<th>Mätpunkter</th>
+			<th>Helt ifyllda</th>
+			<th>Delvis ifyllda</th>
+			<th>Ej ifyllda</th>
+			<th>Formulär</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="day in days">
+				<td>{{day.desc}}</td>
+				<td>{{day.readings.length}}</td>
+				<td>{{day.filled_readings}} ({{round(day.filled_readings/day.readings.length)}}%)</td>
+				<td>{{day.part_readings}} ({{round(day.part_readings/day.readings.length)}}%)</td>
+				<td>{{day.unfilled_readings}} ({{round(day.unfilled_readings/day.readings.length)}}%)</td>
+				<td>{{day.forms.length}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div days-chart></div>
+	<div days-assessment-chart></div>
+</div>

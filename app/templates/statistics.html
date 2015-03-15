@@ -1,0 +1,13 @@
+<div id="statistics" class="box">
+	<h3>Statistik</h3>
+	<div class="menu">
+		<a href="" ng-click="route()">Sjukhus</a> | 
+		<a href="" ng-click="route('times')">Tider</a> |
+		<a href="" ng-click="route('days')">Dagar</a> |
+		<a href="" ng-click="route('assessments')">Skattningar</a> |
+		<a href="" ng-click="route('variables')">Variabler</a>
+	</div>
+
+	<div ng-include="content">
+	</div>
+</div>
