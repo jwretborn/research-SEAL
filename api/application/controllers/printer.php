@@ -82,7 +82,7 @@ class Printer extends CI_Controller {
 						$data['readings'][$keys[$reading['hospital_id']]['i']+$j][$i] = array();
 	
 					array_push($data['readings'][$keys[$reading['hospital_id']]['i']+$j][$i], array(
-						'day' => strtr((date('H:i', $reading['timestamp']) == '00:00' ? date('D d/n', $reading['timestamp']-1) : date('D d/n', $reading['timestamp'])), $swe_days),
+						'day' => strtr((date('H:i', $reading['timestamp']) == '00:00' ? date('D j/n', $reading['timestamp']-1) : date('D d/n', $reading['timestamp'])), $swe_days),
 						'hour' => strtr(date('H:i', $reading['timestamp']), array('00:00' => '24:00')),
 						'id' => $reading['id'],
 						'forms' => $this->seal_form->get(array('reading_id' => $reading['id'], 'type' => $j+1), FALSE, 'type ASC'),
