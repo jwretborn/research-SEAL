@@ -1,0 +1,2 @@
+<reading_id> <question_1> <question_2> <type: 1=läk,2=ssk,3=DAL,4=DASK,5=usk>
+6202 2 2 1

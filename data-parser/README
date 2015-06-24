@@ -1,0 +1,18 @@
+1. Install pip
+
+2. Install virtualenv
+
+pip install virtualenv
+
+3. Download latest Mysql-version from the official website
+
+4. Create virtualenv
+
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+5. On a Mac, add the following to your shell http://stackoverflow.com/questions/4559699/python-mysqldb-and-library-not-loaded-libmysqlclient-16-dylib
+
+export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
+
