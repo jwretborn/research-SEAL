@@ -104,7 +104,7 @@ class seal_readings extends DI_Simplelib {
 		$readings = array();
 
 		// Get hospitals and timepoints
-		$hospitals = $this->CI->seal_hospital->get(array('id' => 2));
+		$hospitals = $this->CI->seal_hospital->get(array('id' => 1));
 		$timepoints = $this->CI->seal_timepoint->get();
 
 		// Get the number of days between the dates

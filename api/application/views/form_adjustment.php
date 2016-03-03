@@ -34,8 +34,7 @@
 					<div class="a">
 						<span class="checkbox">Sjuksköterska</span>
 						<span class="checkbox">Läkare</span>
-						<span class="checkbox">DASK</span>
-						<span class="checkbox">DAL</span>
+						<span class="checkbox">Undersköterska</span>
 						<span class="endpoint"></span>
 					</div>
 				</div>

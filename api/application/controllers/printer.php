@@ -11,7 +11,7 @@ class Printer extends CI_Controller {
 		var_dump("reading");
 	}
 
-	public function form($id='', $filter='', $order='') {
+	public function form($id='', $filter='', $order='', $start='', $end='') {
 		$this->load->model('seal_reading');
 		$this->load->model('seal_hospital');
 		$this->load->model('seal_form');
@@ -56,6 +56,14 @@ class Printer extends CI_Controller {
 				$where = array();
 			}
 
+			if ($start !== '') {
+				$where['timestamp >'] = strtotime($start);
+			}
+
+			if ($end !== '') {
+				$where['timestamp <'] = strtotime($end)+(24*3600);
+			}
+
 			$readings = $this->seal_reading->get($where, FALSE, 'timestamp ASC');
 			$data['readings'] = array();
 			$keys = array();
@@ -66,10 +74,13 @@ class Printer extends CI_Controller {
 				$keys[$hospital['id']] = array('i' => $index, 'name' => $hospital['name']);
 			}
 
-			if ( $order !== '' )
+			if ( $order === 'repeat' ) {
 				$repeat = 1;
-			else
+			}
+			else {
 				$repeat = 0;
+			}
+
 
 			for ($j=0; $j<=$repeat; $j++) {
 				foreach($readings as $key => $reading) {
