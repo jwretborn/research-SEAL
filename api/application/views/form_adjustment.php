@@ -9,11 +9,11 @@
 	</head>
 	<body>
 		<div id="wrapper">
-		<?php foreach ($readings as $key => $hospital): ?>
+		<?php $count = 0; foreach ($readings as $key => $hospital): ?>
 			<?php foreach ($hospital as $index => $time): ?>
 				<?php foreach ($time as $i => $reading): ?>
 			<div id="header">
-				<span class="code">Kod: <?php echo $reading['id']; ?></span>
+				<span class="code">Kod: <?php $count++; echo $reading['id']; ?></span>
 				<p>
 					Belastningsskattning akuten: <?php echo $reading['hospital']; ?>
 				<p>
@@ -53,25 +53,12 @@
 						<span class="endpoint">Mycket hög</span>
 					</div>
 				</div>
-				<div class="question">
-					<div class="q">
-						3. Har du känt dig stressad under den senaste timmen?
-					</div>
-					<div class="a">
-						<span class="startpoint">Inte alls</span>
-						<span class="checkbox">1</span>
-						<span class="checkbox">2</span>
-						<span class="checkbox">3</span>
-						<span class="checkbox">4</span>
-						<span class="checkbox">5</span>
-						<span class="checkbox">6</span>
-						<span class="endpoint">Mycket stressad</span>
-					</div>
-				</div>
 				<span class="code">Kod: <?php echo $reading['id']; ?></span>
 			</div>
 			<br />
-			<div class="pb"></div>
+			<br />
+			<br />
+			<?php if ($count%2 === 0) :?><div class="pb"></div><?php endif; ?>
 				<?php endforeach; ?>
 			<?php endforeach; ?>
 		<?php endforeach; ?>

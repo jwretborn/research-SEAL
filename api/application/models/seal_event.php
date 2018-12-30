@@ -103,4 +103,32 @@
 				return FALSE;
 			}
 		}
+
+		public function get_for_patients($timestamp, $hospital_id, $period=3600) {
+			if ($cache = $this->cache->get('event.patients.timestamp.'.$timestamp.'.'.$hospital_id)) {
+				return $cache;
+			}
+
+			$this->db->select($this->table.'.*');
+			$this->db->where(
+				array(
+					'seal_patients.in_timestamp <=' => $timestamp,
+					'seal_patients.out_timestamp >=' => $timestamp-$period,
+					$this->table.'.hospital_id' => $hospital_id
+				)
+			);
+			$this->db->join('seal_patients', 'seal_patients.id = '.$this->table.'.patient_id');
+			$this->db->order_by('patient_id, timestamp asc');
+
+			$q = $this->db->get($this->table);
+
+			if ($q->num_rows() > 0) {
+				$res = $q->result_array();
+				$this->cache->save('event.before.timestamp.'.$timestamp.'.'.$hospital_id, $res, 30);
+				return $res;
+			}
+			else {
+				return FALSE;
+			}
+		}
 	}

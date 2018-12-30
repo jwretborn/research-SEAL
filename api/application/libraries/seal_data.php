@@ -965,6 +965,42 @@ class seal_data extends DI_Simplelib {
 		return $result;
 	}
 
+	/*
+	 * Calc old-school time to md. Only calculated and counted for patients that have a MD assigned. Pts without MD assigned are not counted.
+	 * Only the time to the first assigned MD is counted
+	 **/
+	public function calc_time_to_md($reading) {
+		$patients = $this->CI->seal_patient->get_for_timestamp($reading['timestamp'], $reading['hospital_id']);
+		$events = $this->CI->seal_event->get_for_patients($reading['timestamp'], $reading['hospital_id']);
+		$res = [];
+		$pat_count = $tot_time = $time = $tmp_id = 0;
+		foreach ($events as $key => $value) {
+			if ($value['patient_id'] !== $tmp_id) {
+				$pat_count++;
+				$tmp_id = $value['patient_id'];
+			}
+			if ($value['doc'] !== null) {
+				if (isset($res[$value['patient_id']]) && $value['timestamp'] > $res[$value['patient_id']]['timestamp'] ) {
+					continue; # We want the earliest registered doctor
+				}
+				$res[$value['patient_id']] = $value;
+				foreach ($patients as $index => $pt) {
+					if ($pt['id'] === $value['patient_id']) {
+						$t = $value['timestamp'] - $pt['in_timestamp'];
+						$res[$value['patient_id']]['time_to_md'] = $t;
+						$tot_time += $t;
+					}
+				}
+			}
+		}
+		$result = array(
+			'patients' => $pat_count,
+			'total_time' => ($tot_time / 3600 ),
+			'time_to_md' => ($tot_time / 3600 / count($res))
+		);
+		return $result;
+	}
+
 	public function calc_mean_model($data) {
 		$result = array(
 				'constant' => 1.542,
